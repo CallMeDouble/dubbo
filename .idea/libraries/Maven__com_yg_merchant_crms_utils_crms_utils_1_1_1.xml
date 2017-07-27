@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.yg.merchant.crms-utils:crms-utils:1.1.1">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/yg/merchant/crms-utils/crms-utils/1.1.1/crms-utils-1.1.1.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/yg/merchant/crms-utils/crms-utils/1.1.1/crms-utils-1.1.1-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/yg/merchant/crms-utils/crms-utils/1.1.1/crms-utils-1.1.1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

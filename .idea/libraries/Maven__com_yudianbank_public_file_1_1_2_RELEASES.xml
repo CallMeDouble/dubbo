@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.yudianbank.public:file:1.1.2-RELEASES">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/yudianbank/public/file/1.1.2-RELEASES/file-1.1.2-RELEASES.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/yudianbank/public/file/1.1.2-RELEASES/file-1.1.2-RELEASES-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/yudianbank/public/file/1.1.2-RELEASES/file-1.1.2-RELEASES-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:jee="http://www.springframework.org/schema/jee" xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:tx="http://www.springframework.org/schema/tx" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/aop
+             http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+             http://www.springframework.org/schema/beans
+             http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+             http://www.springframework.org/schema/context
+             http://www.springframework.org/schema/context/spring-context-3.0.xsd
+             http://www.springframework.org/schema/jee
+             http://www.springframework.org/schema/jee/spring-jee-3.0.xsd
+             http://www.springframework.org/schema/tx
+             http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+             http://code.alibabatech.com/schema/dubbo
+             http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+
+    <bean id="demoBean" class="utils.DemoBean" />
+
+    <!-- dubbo and zookeeper -->
+    <!-- setting for service provider -->
+    <!-- bind the provider information for dependency analysis -->
+    <dubbo:application name="consumer-rmi"/>
+    <!-- zookeeper register center -->
+    <dubbo:registry id="r2" address="zookeeper://192.168.10.120:2181"/>
+
+    <bean id="demoCallback" class="notify.impl.NotifyImpl" />
+
+    <dubbo:reference id="demoService"
+        interface="demo.dubbo.service.DemoService" />
+
+    <dubbo:reference id="anotherService"
+            interface="demo.dubbo.service.AnotherService" />
+
+    <bean id="remoteDemoService" class="demo.dubbo.provider.impl.DemoServiceImpl" />
+
+    <bean id="remoteAotherService" class="demo.dubbo.provider.impl.AnotherServiceImpl" />
+
+    <dubbo:service interface="demo.dubbo.service.DemoService"
+                   ref="remoteDemoService" connections="1" actives="1"/>
+
+    <dubbo:service interface="demo.dubbo.service.AnotherService"
+                   ref="remoteAotherService" connections="1" actives="1"/>
+
+
+</beans>
