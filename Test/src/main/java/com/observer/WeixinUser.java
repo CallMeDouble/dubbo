@@ -13,6 +13,6 @@ public class WeixinUser implements Observer {
     }
 
     @Override public void update(String message) {
-        System.out.print(name + "-" + message);
+        System.out.print(name + "--" + message);
     }
 }
