@@ -1,4 +1,4 @@
-package com.observer;
+package com.doubledragon.pattern.observer;
 
 /**
  * Created by zhushuanglong on 2017/4/11.
@@ -13,6 +13,6 @@ public class WeixinUser implements Observer {
     }
 
     @Override public void update(String message) {
-        System.out.print(name + "-" + message);
+        System.out.print(name + "--" + message);
     }
 }

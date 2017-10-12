@@ -1,4 +1,4 @@
-package com.observer;
+package com.doubledragon.pattern.observer;
 
 /**
  * Created by zhushuanglong on 2017/4/11.

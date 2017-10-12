@@ -1,4 +1,4 @@
-package com.observer;
+package com.doubledragon.pattern.observer;
 
 import java.util.ArrayList;
 import java.util.List;
