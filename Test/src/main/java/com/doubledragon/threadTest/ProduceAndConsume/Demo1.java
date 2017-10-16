@@ -87,12 +87,7 @@ class Producer{
     }
 
     public void Produce(final int val){
-        new Thread(){
-            @Override
-            public void run(){
-                depot.produce(val);
-            }
-        }.start();
+        new Thread(() -> depot.produce(val)).start();
     }
 }
 
