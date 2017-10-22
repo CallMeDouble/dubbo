@@ -87,7 +87,16 @@ class Producer{
     }
 
     public void Produce(final int val){
+<<<<<<< Updated upstream
         new Thread(() -> depot.produce(val)).start();
+=======
+        new Thread(){
+            @Override
+            public void run(){
+                depot.produce(val);
+            }
+        }.start();
+>>>>>>> Stashed changes
     }
 }
 

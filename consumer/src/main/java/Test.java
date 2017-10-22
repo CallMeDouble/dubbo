@@ -1,4 +1,4 @@
-import com.yudianbank.common.util.StringUtil;
+import org.apache.commons.lang.StringUtils;
 
 /**
  * Created by allan on 16-11-1.
@@ -6,10 +6,10 @@ import com.yudianbank.common.util.StringUtil;
 public class Test {
 
     private static boolean validateNullAndEmptyString(String string1, String string2) {
-        if(StringUtil.isNotNull(string1) || StringUtil.isNotNull(string2)){
-            return StringUtil.eq(string1,string2);
+        if(StringUtils.isNotBlank(string1) || StringUtils.isNotBlank((string2))){
+            return StringUtils.equals(string1,string2);
         }else{
-            return StringUtil.isNull(string1) && StringUtil.isNull(string2);
+            return StringUtils.isBlank(string1) && StringUtils.isBlank(string2);
         }
     }
 
