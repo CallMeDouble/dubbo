@@ -1,7 +1,11 @@
 package com.test;
 
+import com.alibaba.fastjson.JSON;
+
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 /**
@@ -19,6 +23,14 @@ public class Test {
         for(Integer i : list){
             System.out.println(i == 1);
         }
+
+        A a = new A();
+        a.setA("a");
+        Set<String> objects = new HashSet<>();
+        objects.add("1");
+        objects.add("2");
+        a.setB(objects);
+        System.out.println(JSON.toJSONString(a));
     }
 
 }
