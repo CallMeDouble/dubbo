@@ -21,8 +21,6 @@
 
     <bean id="demoService" class="demo.dubbo.provider.impl.DemoServiceImpl" />
 
-    <bean id="anotherService" class="demo.dubbo.provider.impl.AnotherServiceImpl" />
-
 
     <!-- dubbo and zookeeper -->
     <!-- setting for service provider -->
@@ -37,7 +35,5 @@
     <dubbo:service interface="demo.dubbo.service.DemoService"
                    ref="demoService" connections="1" actives="1"/>
 
-    <dubbo:service interface="demo.dubbo.service.AnotherService"
-                   ref="anotherService" connections="1" actives="1"/>
 
 </beans>
