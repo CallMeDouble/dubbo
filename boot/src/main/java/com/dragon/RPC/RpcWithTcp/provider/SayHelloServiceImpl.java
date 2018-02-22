@@ -1,6 +1,6 @@
 package com.dragon.RPC.RpcWithTcp.provider;
 
-import com.doubledragon.RPC.RpcWithTcp.base.SayHelloService;
+import com.dragon.RPC.RpcWithTcp.base.SayHelloService;
 
 /**
  * Created by zhushuanglong on 2018/1/11.
