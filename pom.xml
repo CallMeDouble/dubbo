@@ -3,9 +3,10 @@
   <modelVersion>4.0.0</modelVersion>
 
   <parent>
-    <groupId>com.yudianbank.public</groupId>
-    <artifactId>parent</artifactId>
-    <version>1.1.2-RELEASES</version>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-parent</artifactId>
+    <version>1.5.9.RELEASE</version>
+    <relativePath/>
   </parent>
 
   <groupId>demo</groupId>
@@ -16,6 +17,7 @@
     <module>consumer</module>
     <module>base</module>
       <module>Test</module>
+    <module>boot</module>
   </modules>
   <packaging>pom</packaging>
 
@@ -35,50 +37,6 @@
       <artifactId>javax.servlet-api</artifactId>
       <scope>provided</scope>
     </dependency>
-    <dependency>
-      <groupId>com.yudianbank.framework</groupId>
-      <artifactId>ydjf-common</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>com.yudianbank.public</groupId>
-      <artifactId>monitor</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>com.yudianbank.public</groupId>
-      <artifactId>quartz</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>com.yudianbank.public</groupId>
-      <artifactId>file</artifactId>
-      <exclusions>
-        <exclusion>
-          <groupId>com.yudianbank.public</groupId>
-          <artifactId>ufile</artifactId>
-        </exclusion>
-      </exclusions>
-    </dependency>
-    <dependency>
-      <groupId>com.yudianbank.public</groupId>
-      <artifactId>ufile</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>com.yudianbank.public</groupId>
-      <artifactId>credit</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>com.yudianbank.public</groupId>
-      <artifactId>api-sdk</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>com.yudianbank.project</groupId>
-      <artifactId>root-api</artifactId>
-      <version>${package.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>com.yudianbank.project</groupId>
-      <artifactId>paymentApp-api</artifactId>
-      <version>1.0-SNAPSHOT</version>
-    </dependency>
 
     <dependency>
       <groupId>com.alibaba</groupId>
@@ -94,6 +52,13 @@
           <artifactId>spring</artifactId>
         </exclusion>
       </exclusions>
+    </dependency>
+
+    <dependency>
+      <groupId>redis.clients</groupId>
+      <artifactId>jedis</artifactId>
+      <version>2.9.0</version>
+      <scope>compile</scope>
     </dependency>
 
     <dependency>

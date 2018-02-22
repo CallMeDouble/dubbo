@@ -1,5 +1,11 @@
 package com.test;
 
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
+
 /**
  * Created by zhushuanglong on 2017/8/10.
  */
@@ -26,6 +32,13 @@ public class Test {
     }
 
     public static void main(String[] args) throws Exception{
-        A();
+        ZoneId zoneId = ZoneId.systemDefault();
+        LocalDateTime localDateTime = LocalDateTime
+                .parse("20190911030404", DateTimeFormatter.ofPattern("yyyyMMddHHmmss"));
+        ZonedDateTime zdt = localDateTime.atZone(zoneId);
+
+        Date date = Date.from(zdt.toInstant());
+        System.out.println(date);
+        System.out.println(localDateTime);
     }
 }

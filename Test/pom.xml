@@ -11,5 +11,8 @@
 
     <artifactId>Test</artifactId>
 
+    <dependencies>
+
+    </dependencies>
 
 </project>
