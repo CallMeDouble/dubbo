@@ -56,4 +56,7 @@ dependency-reduced-pom.xml
 *.idea
 *.idea/
 
+
 /.gitignore
+/out
+/target
