@@ -1,4 +1,4 @@
-package com.dragon.redis;
+package com.dragon.redis.jedis;
 
 import redis.clients.jedis.Jedis;
 
