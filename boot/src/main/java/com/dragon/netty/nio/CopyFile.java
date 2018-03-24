@@ -7,11 +7,6 @@ import java.nio.channels.*;
 public class CopyFile
 {
   static public void main( String args[] ) throws Exception {
-
-    FileInputStream fin1 = new FileInputStream( new File("D:\\tools\\系统镜像\\WIN7-64_2017V.GHO") );
-    FileChannel channel = fin1.getChannel();
-    System.out.println(channel.size());
-
     if (args.length<2) {
       System.err.println( "Usage: java CopyFile infile outfile" );
       System.exit( 1 );

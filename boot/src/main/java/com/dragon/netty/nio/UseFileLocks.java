@@ -1,8 +1,8 @@
 package com.dragon.netty.nio;// $Id$
 
-import java.io.RandomAccessFile;
-import java.nio.channels.FileChannel;
-import java.nio.channels.FileLock;
+import java.io.*;
+import java.nio.*;
+import java.nio.channels.*;
 
 public class UseFileLocks
 {
