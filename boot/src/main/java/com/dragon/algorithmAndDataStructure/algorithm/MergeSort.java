@@ -1,4 +1,4 @@
-package com.dragon.algorithm;
+package com.dragon.algorithmAndDataStructure.algorithm;
 
 import java.util.Arrays;
 

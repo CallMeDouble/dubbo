@@ -1,4 +1,4 @@
-package com.dragon.algorithm;
+package com.dragon.algorithmAndDataStructure.algorithm;
 
 /**
  * Created by zhushuanglong on 2018/2/22.
