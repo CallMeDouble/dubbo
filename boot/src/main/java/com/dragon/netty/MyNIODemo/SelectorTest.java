@@ -1,4 +1,4 @@
-package com.dragon.netty.MyDemo;
+package com.dragon.netty.MyNIODemo;
 
 import java.net.InetSocketAddress;
 import java.net.ServerSocket;

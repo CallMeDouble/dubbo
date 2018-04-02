@@ -9,6 +9,8 @@ import io.netty.util.CharsetUtil;
 
 /**
  * Created by double on 18-3-25.
+ * ChannelInboundHandlerAdapter是 ChannelInboundHandler的一个实现
+ * SimpleChannelInboundHandler 是 ChannelInboundHandlerAdapter的一个实现
  */
 //1.@Sharable标记这个类的实例可以在 channel 里共享
 @ChannelHandler.Sharable

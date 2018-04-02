@@ -31,6 +31,7 @@ public class EchoServer {
         NioEventLoopGroup eventExecutors = new NioEventLoopGroup();
         try {
             //4.创建 ServerBootstrap实例来引导服务器并随后绑定
+            //ServerBootstrap是Socket服务端启动类,通过这个类的实例，用户可以创建对应的服务端程序。！！！
             ServerBootstrap serverBootstrap = new ServerBootstrap();
             //分配一个 NioEventLoopGroup 实例来处理事件的处理，如接受新的连接和读/写数据。
             serverBootstrap.group(eventExecutors)
@@ -50,10 +51,11 @@ public class EchoServer {
                         }
                     });
             //8.最后调用 ServerBootstrap.bind() 绑定服务器;
+            // 调用 sync() 的原因是当前线程阻塞？？？？？？？？？
             // sync 等待服务器关闭
             ChannelFuture channelFuture = serverBootstrap.bind().sync();
             System.out.println(EchoServer.class.getName()+"start and listen on "+channelFuture.channel().localAddress());
-            //9.关闭 channel 和 块，直到它被关闭
+            //9.关闭 channel 和 块，直到它被关闭 ，因为我们 在 Channel 的 CloseFuture 上调用 sync()
             channelFuture.channel().closeFuture().sync();
         } catch (InterruptedException e) {
             e.printStackTrace();
