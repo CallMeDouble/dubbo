@@ -94,7 +94,7 @@ public class BSTree<T extends Comparable<T>> {
     }
 
     /**
-     * 插入
+     * 插入节点
      * @param key
      */
     public void insertNode(T key){
@@ -140,24 +140,6 @@ public class BSTree<T extends Comparable<T>> {
     }
 
     /**
-     * 后继结点
-     * @param bstNode
-     * @return
-     */
-    public BSTNode<T> successor(BSTNode<T> bstNode){
-        if(bstNode.getRight()!=null){
-            return getMin(bstNode);
-        }
-
-        BSTNode<T> parent = bstNode.getParent();
-        while((parent!=null) && (bstNode == parent.getRight())){
-            bstNode = parent;
-            parent = parent.getParent();
-        }
-        return parent;
-    }
-
-    /**
      * 删除
      * @param bst
      * @param z
@@ -185,23 +167,46 @@ public class BSTree<T extends Comparable<T>> {
             x = y.right;
         }
         //删除 真正删除节点
-        if (x != null)
+        if (x != null) {
             x.parent = y.parent;
-
+        }
         //删除之后把子树折断了，准备焊接
-        if (y.parent == null)
+        if (y.parent == null) {
             bst.root = x;
-        else if (y == y.parent.left)
+        }else if (y == y.parent.left) {
             y.parent.left = x;
-        else
+        }else {
             y.parent.right = x;
-
+        }
         //针对情况三的删除转移、做值替换
-        if (y != z)
+        if (y != z) {
             z.key = y.key;
-
+        }
         return y;
     }
+
+
+    //找结点(x)的后继结点。即，查找"二叉树中数据值大于该结点"的"最小结点"。
+    public BSTNode<T> successor(BSTNode<T> x) {
+        // 如果x存在右孩子，则"x的后继结点"为 "以其右孩子为根的子树的最小结点"。
+        if (x.right != null) {
+            return getMin(x.right);
+        }
+        // 如果x没有右孩子。则x有以下两种可能：
+        // (01) x是"一个左孩子"，则"x的后继结点"为 "它的父结点"。
+        // (02) x是"一个右孩子"，则查找"x的最低的父结点，并且该父结点要具有左孩子"，找到的这个"最低的父结点"就是"x的后继结点"。
+        BSTNode<T> y = x.parent;
+        while ((y!=null) && (x==y.right)) {
+            x = y;
+            y = y.parent;
+        }
+        return y;
+    }
+
+
+
+
+
 
 
     /**
@@ -288,6 +293,25 @@ public class BSTree<T extends Comparable<T>> {
 
 
 
+    /*
+     * 找结点(x)的前驱结点。即，查找"二叉树中数据值小于该结点"的"最大结点"。
+     */
+    public BSTNode<T> predecessor(BSTNode<T> x) {
+        // 如果x存在左孩子，则"x的前驱结点"为 "以其左孩子为根的子树的最大结点"。
+        if (x.left != null)
+            return getMin(x.left);
+
+        // 如果x没有左孩子。则x有以下两种可能：
+        // (01) x是"一个右孩子"，则"x的前驱结点"为 "它的父结点"。
+        // (01) x是"一个左孩子"，则查找"x的最低的父结点，并且该父结点要具有右孩子"，找到的这个"最低的父结点"就是"x的前驱结点"。
+        BSTNode<T> y = x.parent;
+        while ((y!=null) && (x==y.left)) {
+            x = y;
+            y = y.parent;
+        }
+
+        return y;
+    }
 
 
     //    2.1 前序遍历

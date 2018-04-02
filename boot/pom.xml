@@ -129,6 +129,11 @@
             <artifactId>jacob-jdk15</artifactId>
             <version>1.18</version>
         </dependency>
+        <dependency>
+            <groupId>io.netty</groupId>
+            <artifactId>netty-all</artifactId>
+            <version>4.0.36.Final</version>
+        </dependency>
         <!--Feign引入-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>

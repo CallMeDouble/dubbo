@@ -1,4 +1,4 @@
-package com.dragon.netty.netty.firstNetty;
+package com.dragon.netty.netty.inAction;
 
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
