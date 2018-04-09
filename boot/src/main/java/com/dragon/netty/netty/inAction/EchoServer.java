@@ -50,6 +50,7 @@ public class EchoServer {
                             socketChannel.pipeline().addLast(new EchoServerHandler());
                         }
                     });
+
             //8.最后调用 ServerBootstrap.bind() 绑定服务器;
             // 调用 sync() 的原因是当前线程阻塞？？？？？？？？？
             // sync 等待服务器关闭
