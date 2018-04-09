@@ -2,12 +2,14 @@ package com.dragon.netty.netty.firstNetty;
 
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.Channel;
+import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelOption;
 import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 import io.netty.handler.logging.LogLevel;
 import io.netty.handler.logging.LoggingHandler;
+import io.netty.util.concurrent.Future;
 
 /**
  * Created by zhushuanglong on 2018/3/28.
@@ -35,15 +37,18 @@ public class NettyTelnetServer {
                 .childHandler(new NettyTelnetInitializer());
 
         //绑定对应的端口号，并启动时开始监听端口上的通道连接, 当有连接进来时，会监听到
-        Channel channel = serverBootstrap.bind(port).sync().channel();
+        ChannelFuture channelFuture = serverBootstrap.bind(port).sync();
 
         //等待关闭，同步端口？？？？？？
+        Channel channel = channelFuture.channel();
         channel.closeFuture().sync();
     }
 
-    public void close(){
-        bossGroup.shutdownGracefully();
-        workGroup.shutdownGracefully();
+    public void close() throws InterruptedException {
+        Future<?> future = bossGroup.shutdownGracefully();
+        future.sync();
+        Future<?> future1 = workGroup.shutdownGracefully();
+        future1.sync();
     }
 
 

@@ -47,6 +47,7 @@ public class EchoClient {
                     });
             //6.Bootstrap.connect（）被调用，用于连接到远程的 - 本例就是 echo(回声)服务器。
             //  等待连接完成
+            bootstrap.connect();
             ChannelFuture channelFuture = bootstrap.connect().sync();
             //7.阻塞直到 Channel 关闭
             channelFuture.channel().closeFuture().sync();
