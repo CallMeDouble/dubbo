@@ -23,7 +23,7 @@ public class DemoServiceImpl implements DemoService {
         }
 
         try {
-            Thread.sleep(100000000L);
+            Thread.sleep(1000L);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
