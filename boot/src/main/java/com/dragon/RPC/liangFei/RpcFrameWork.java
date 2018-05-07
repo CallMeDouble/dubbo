@@ -12,7 +12,7 @@ import java.net.Socket;
 /**
  * Created by dragon
  */
-public class RpcDemo {
+public class RpcFrameWork {
 
     /**
      * 暴露某个服务
@@ -29,7 +29,7 @@ public class RpcDemo {
         if (port <= 0 || port > 65535) {
             throw new IllegalArgumentException("invalid port:" + port);
         }
-        System.out.println("export service +" + service.getClass().getName() + "on port:" + port);
+        System.out.println("export service " + service.getClass().getName() + " on port:" + port);
 
         ServerSocket serverSocket = new ServerSocket(port);
         for(;;){
@@ -37,22 +37,39 @@ public class RpcDemo {
             //开启线程接收输入
             new Thread(() -> {
                 try {
-                    ObjectInputStream objectInputStream = new ObjectInputStream(accept.getInputStream());
-                    //获取方法名
-                    String methodName = objectInputStream.readUTF();
-                    //获取参数类型
-                    Class<?>[] parameterTypes = (Class<?>[]) objectInputStream.readObject();
-                    //获取参数
-                    Object[] arguments = (Object[]) objectInputStream.readObject();
+                    try {
+                        ObjectInputStream objectInputStream = new ObjectInputStream(accept.getInputStream());
+                        //获取方法名
+                        try {
+                            String methodName = objectInputStream.readUTF();
+                            //获取参数类型
+                            Class<?>[] parameterTypes = (Class<?>[]) objectInputStream.readObject();
+                            //获取参数
+                            Object[] arguments = (Object[]) objectInputStream.readObject();
 
-                    //获取方法
-                    Method method = service.getClass().getMethod(methodName, parameterTypes);
-                    //调用方法，获取方法调用结果
-                    Object result = method.invoke(service, arguments);
+                            System.out.println("methodName:" + methodName);
+                            //获取方法
+                            Method method = service.getClass().getMethod(methodName, parameterTypes);
 
-                    //输出结果
-                    ObjectOutputStream objectOutputStream = new ObjectOutputStream(accept.getOutputStream());
-                    objectOutputStream.writeObject(result);
+                            ObjectOutputStream objectOutputStream = new ObjectOutputStream(accept.getOutputStream());
+                            try {
+                                //调用方法，获取方法调用结果
+                                Object result = method.invoke(service, arguments);
+                                System.out.println("result:" + result);
+
+                                //输出结果
+                                objectOutputStream.writeObject(result);
+                            } catch (Throwable t) {
+                                objectOutputStream.writeObject(t);
+                            } finally {
+                                objectOutputStream.close();
+                            }
+                        } finally {
+                            objectInputStream.close();
+                        }
+                    } finally {
+                        accept.close();
+                    }
 
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -119,4 +136,5 @@ public class RpcDemo {
                     }
         });
     }
+
 }
