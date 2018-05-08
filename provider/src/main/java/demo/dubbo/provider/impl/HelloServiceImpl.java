@@ -1,6 +1,6 @@
 package demo.dubbo.provider.impl;
 
-import demo.dubbo.service.DemoService;
+import demo.dubbo.service.HelloService;
 
 import java.net.InetAddress;
 import java.net.UnknownHostException;
@@ -8,7 +8,7 @@ import java.net.UnknownHostException;
 /**
  * Created by allan on 16-11-1.
  */
-public class DemoServiceImpl implements DemoService {
+public class HelloServiceImpl implements HelloService {
 
     public String sayHello(String name) {
         String hostname = null;

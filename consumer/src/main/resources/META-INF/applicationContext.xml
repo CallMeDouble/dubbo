@@ -30,7 +30,7 @@
 
     <!--引用生产者暴露的接口进行消费-->
     <dubbo:reference id="demoService"
-                     interface="demo.dubbo.service.DemoService" />
+                     interface="demo.dubbo.service.HelloService" />
 
 
     <!--<bean id="demoCallback" class="notify.impl.NotifyImpl" />-->

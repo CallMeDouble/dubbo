@@ -1,6 +1,6 @@
 package web;
 
-import demo.dubbo.service.DemoService;
+import demo.dubbo.service.HelloService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,13 +17,13 @@ public class DemoController {
 
     private static final SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
     @Autowired
-    private DemoService demoService;
+    private HelloService helloService;
 
     @RequestMapping("/hello")
     @ResponseBody
     public String sayHello() {
 
-        String name = demoService.sayHello(sdf.format(new Date(System.currentTimeMillis())));
+        String name = helloService.sayHello(sdf.format(new Date(System.currentTimeMillis())));
         return name;
     }
 }
