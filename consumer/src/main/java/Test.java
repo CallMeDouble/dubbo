@@ -1,16 +1,15 @@
-import com.yudianbank.common.util.StringUtil;
-
 /**
  * Created by allan on 16-11-1.
  */
 public class Test {
 
     private static boolean validateNullAndEmptyString(String string1, String string2) {
-        if(StringUtil.isNotNull(string1) || StringUtil.isNotNull(string2)){
-            return StringUtil.eq(string1,string2);
-        }else{
-            return StringUtil.isNull(string1) && StringUtil.isNull(string2);
-        }
+//        if(StringUtil.isNotNull(string1) || StringUtil.isNotNull(string2)){
+//            return StringUtil.eq(string1,string2);
+//        }else{
+//            return StringUtil.isNull(string1) && StringUtil.isNull(string2);
+//        }
+        return true;
     }
 
     public static void main(String...args) {

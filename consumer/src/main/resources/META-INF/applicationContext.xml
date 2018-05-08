@@ -26,25 +26,18 @@
     <!-- bind the provider information for dependency analysis -->
     <dubbo:application name="consumer-rmi"/>
     <!-- zookeeper register center -->
-    <dubbo:registry id="r2" address="zookeeper://192.168.10.120:2181"/>
+    <dubbo:registry id="r2" address="zookeeper://localhost:2181"/>
 
-    <bean id="demoCallback" class="notify.impl.NotifyImpl" />
-
+    <!--引用生产者暴露的接口进行消费-->
     <dubbo:reference id="demoService"
-        interface="demo.dubbo.service.DemoService" />
+                     interface="demo.dubbo.service.HelloService" />
 
-    <dubbo:reference id="anotherService"
-            interface="demo.dubbo.service.AnotherService" />
 
-    <bean id="remoteDemoService" class="demo.dubbo.provider.impl.DemoServiceImpl" />
+    <!--<bean id="demoCallback" class="notify.impl.NotifyImpl" />-->
 
-    <bean id="remoteAotherService" class="demo.dubbo.provider.impl.AnotherServiceImpl" />
+    <!--<dubbo:reference id="anotherService"-->
+            <!--interface="demo.dubbo.service.AnotherService" />-->
 
-    <dubbo:service interface="demo.dubbo.service.DemoService"
-                   ref="remoteDemoService" connections="1" actives="1"/>
-
-    <dubbo:service interface="demo.dubbo.service.AnotherService"
-                   ref="remoteAotherService" connections="1" actives="1"/>
 
 
 </beans>

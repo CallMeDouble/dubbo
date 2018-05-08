@@ -19,7 +19,7 @@
              http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
 
 
-    <bean id="demoService" class="demo.dubbo.provider.impl.DemoServiceImpl" />
+    <bean id="demoService" class="demo.dubbo.provider.impl.HelloServiceImpl" />
 
 
     <!-- dubbo and zookeeper -->
@@ -32,7 +32,8 @@
     <!-- bing rmi service on port -->
     <dubbo:protocol name="rmi" port="1099"/>
 
-    <dubbo:service interface="demo.dubbo.service.DemoService"
+    <!--暴露服务接口-->
+    <dubbo:service interface="demo.dubbo.service.HelloService"
                    ref="demoService" connections="1" actives="1"/>
 
 

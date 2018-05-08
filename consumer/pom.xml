@@ -14,6 +14,7 @@
 
     <properties>
         <jdk.version>1.8</jdk.version>
+        <tomcat.maven.version>2.2</tomcat.maven.version>
     </properties>
     <dependencies>
         <dependency>
@@ -27,6 +28,28 @@
         <finalName>consumer</finalName>
         <pluginManagement>
             <plugins>
+                <plugin>
+                    <groupId>org.apache.tomcat.maven</groupId>
+                    <artifactId>tomcat7-maven-plugin</artifactId>
+                    <version>${tomcat.maven.version}</version>
+                    <configuration>
+                        <url>http://localhost:8080/manager/text</url>
+                        <server>remote.tomcat</server>
+                        <port>8080</port>
+                        <uriEncoding>UTF-8</uriEncoding>
+                        <path>/</path>
+                        <update>true</update>
+                        <username>root</username>
+                        <password>Admin#123456</password>
+                        <!-- spring profile -->
+                        <systemProperties>
+                            <systemProperty>
+                                <name>spring.profiles.active</name>
+                                <value>development</value>
+                            </systemProperty>
+                        </systemProperties>
+                    </configuration>
+                </plugin>
                 <plugin>
                     <groupId>org.eclipse.jetty</groupId>
                     <artifactId>jetty-maven-plugin</artifactId>
