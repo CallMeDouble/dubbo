@@ -16,7 +16,7 @@ public class RpcEncoder extends MessageToByteEncoder<Object> {
 
     @Override
     protected void encode(ChannelHandlerContext channelHandlerContext, Object o, ByteBuf byteBuf) throws Exception {
-        LOGGER.info("入站："+o);
+        LOGGER.info("出站："+o);
         byte[] bytes = SerializerUtil.serialize(o);
         byteBuf.writeByte(bytes.length);
         byteBuf.writeBytes(bytes);

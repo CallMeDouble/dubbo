@@ -1,9 +1,13 @@
 package com.demo.core;
 
 /**
- * Created by dragon
+ * Created by double
+ *
+ * 定义服务端接口
  */
-public class RpcServer {
-    public static void main(String[] args) {
-    }
+public interface RpcServer {
+
+    void start();
+
+    void shutdown();
 }

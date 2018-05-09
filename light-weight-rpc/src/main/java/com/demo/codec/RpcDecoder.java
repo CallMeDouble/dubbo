@@ -1,5 +1,6 @@
 package com.demo.codec;
 
+import com.demo.core.Request;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -14,11 +15,8 @@ public class RpcDecoder extends LengthFieldBasedFrameDecoder {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(RpcDecoder.class);
 
-    private Class<?> genericClass;
-
-    public RpcDecoder(int maxFrameLength, Class<?> genericClass){
+    public RpcDecoder(int maxFrameLength){
         super(maxFrameLength, 0, 4, 0, 4);
-        this.genericClass = genericClass;
     }
 
     @Override
@@ -28,8 +26,8 @@ public class RpcDecoder extends LengthFieldBasedFrameDecoder {
             int length = decode.readableBytes();
             byte[] bytes = new byte[length];
             decode.readBytes(bytes);
-            Object object = SerializerUtil.deserialize(bytes, genericClass);
-            LOGGER.info("出站："+object);
+            Object object = SerializerUtil.deserialize(bytes, Request.class);
+            LOGGER.info("入站："+object);
         }
         return super.decode(ctx, in);
     }

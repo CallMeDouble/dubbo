@@ -1,5 +1,9 @@
 package com.demo.utils;
 
+import com.demo.codec.SerializerUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 
@@ -10,9 +14,13 @@ import java.net.UnknownHostException;
  */
 public class NetUtils {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(NetUtils.class);
+
     public static String getLocalIp() throws UnknownHostException {
         try {
-            return InetAddress.getLocalHost().getHostAddress();
+            String hostAddress = InetAddress.getLocalHost().getHostAddress();
+            LOGGER.info("ip："+hostAddress);
+            return hostAddress;
         } catch (UnknownHostException e) {
             throw e;
         }
