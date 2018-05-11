@@ -8,5 +8,6 @@ public interface Constant {
 
     String ZK_REGISTRY_PATH = "/registry";
 
-    String ZK_DATA_PATH = ZK_REGISTRY_PATH + "/data";
+    //注册中心数据路径
+    String ZK_DATA_PATH = ZK_REGISTRY_PATH + "/service/";
 }
