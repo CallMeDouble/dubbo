@@ -1,5 +1,6 @@
 package com.demo.core.client.connection;
 
+import com.demo.core.server.Response;
 import org.apache.commons.pool2.BasePooledObjectFactory;
 import org.apache.commons.pool2.PooledObject;
 import org.apache.commons.pool2.impl.DefaultPooledObject;
@@ -48,7 +49,7 @@ public class ChannelFactory extends BasePooledObjectFactory<Channel> {
                     @Override
                     protected void initChannel(Channel channel) throws Exception {
                         channel.pipeline().addLast(new LoggingHandler(LogLevel.INFO))
-                                .addLast(new RpcDecoder(10 * 1024 * 1024, Request.class))
+                                .addLast(new RpcDecoder(10 * 1024 * 1024, Response.class))
                                 .addLast(new RpcEncoder())
                                 .addLast(new RpcClientResponseHandler());
                     }

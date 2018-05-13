@@ -61,6 +61,8 @@ public class RpcClientImpl implements RpcClient{
         this.zkConn = zkConn;
         this.clientProxyClass = clientProxyClass;
         this.requestTimeOut = requestTimeOut;
+
+        this.initBootStrapAndChannelConfigByZookeeper();
     }
 
     //主要逻辑是从注册中心中获取服务的节点信息。
@@ -189,7 +191,7 @@ public class RpcClientImpl implements RpcClient{
     private Response getExceptionResponse(String message) {
         Response response = new Response();
         RuntimeException runtimeException = new RuntimeException(message);
-        response.setResponse(runtimeException);
+        response.setThrowable(runtimeException);
         return response;
     }
 

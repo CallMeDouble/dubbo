@@ -26,7 +26,7 @@ public class RpcClientResponseHandler extends SimpleChannelInboundHandler<Respon
             throws Exception {
         BlockingQueue<Response> responses = ResponseMapHelper.responseMap.get(response.getRequestId());
         if(responses == null){
-            ResponseMapHelper.responseMap.put(response.getRequestId(), responses);
+            responses.put(response);
         }
     }
 

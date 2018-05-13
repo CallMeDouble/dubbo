@@ -18,7 +18,8 @@ public class RpcEncoder extends MessageToByteEncoder<Object> {
     protected void encode(ChannelHandlerContext channelHandlerContext, Object o, ByteBuf byteBuf) throws Exception {
         LOGGER.info("出站："+o);
         byte[] bytes = SerializerUtil.serialize(o);
-        byteBuf.writeByte(bytes.length);
+        int length = bytes.length;
+        byteBuf.writeByte(length);
         byteBuf.writeBytes(bytes);
     }
 }

@@ -3,6 +3,7 @@ package com.demo.core.server;
 import com.demo.codec.RpcDecoder;
 import com.demo.codec.RpcEncoder;
 import com.demo.constant.Constant;
+import com.demo.core.client.Request;
 import com.demo.core.server.netty.RpcServerRequestHandler;
 import com.demo.utils.NetUtils;
 import io.netty.bootstrap.ServerBootstrap;
@@ -66,7 +67,7 @@ public class RpcServerImpl implements RpcServer {
                     protected void initChannel(SocketChannel socketChannel) throws Exception {
                         socketChannel.pipeline()
                                 .addLast(new LoggingHandler(LogLevel.INFO))
-                                .addLast(new RpcDecoder(10*1024*1024, Response.class))
+                                .addLast(new RpcDecoder(10*1024*1024, Request.class))
                                 .addLast(new RpcEncoder())
                                 .addLast(new RpcServerRequestHandler(serviceImpl));
                     }
@@ -90,12 +91,13 @@ public class RpcServerImpl implements RpcServer {
         //相当于标示一个集群节点
         String serviceBasePath = Constant.ZK_DATA_PATH + serviceName;
         //本节点在某个集群节点下
-        String connStr = localIp + "+" + port;
+        String connStr = localIp + ":" + port;
 
         //链接zookeeper
         CuratorFramework curatorFramework = CuratorFrameworkFactory.newClient(zkConn,
                 new ExponentialBackoffRetry(1000, 3));
         //连接上zookeeper后开始注册服务节点
+        curatorFramework.start();
         try {
             curatorFramework.create().creatingParentsIfNeeded().forPath(serviceBasePath);
         } catch (Exception e) {
@@ -108,9 +110,10 @@ public class RpcServerImpl implements RpcServer {
         }
         boolean registerSuccess = false;
         //如果集群节点添加成功, 则在集群节点下添加本节点
+        String serviceRegisterPath = serviceBasePath + "/" + connStr;
         while(!registerSuccess){
             try {
-                curatorFramework.create().withMode(CreateMode.EPHEMERAL).forPath(connStr);
+                curatorFramework.create().withMode(CreateMode.EPHEMERAL).forPath(serviceRegisterPath);
                 registerSuccess = true;
                 LOGGER.info("向zookeeper注册本服务成功");
             } catch (Exception e) {
@@ -122,7 +125,7 @@ public class RpcServerImpl implements RpcServer {
                 }
                 LOGGER.info("Retry Register ZK, {}", e.getMessage());
                 try {
-                    curatorFramework.delete().forPath(serviceBasePath + "/" + connStr);
+                    curatorFramework.delete().forPath(serviceRegisterPath);
                 } catch (Exception e1) {
                     e1.printStackTrace();
                 }

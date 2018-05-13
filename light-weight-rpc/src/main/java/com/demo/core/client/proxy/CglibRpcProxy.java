@@ -1,6 +1,7 @@
 package com.demo.core.client.proxy;
 
 import com.demo.core.client.RpcClient;
+import com.demo.core.server.Response;
 import net.sf.cglib.proxy.Enhancer;
 import net.sf.cglib.proxy.MethodInterceptor;
 import net.sf.cglib.proxy.MethodProxy;
@@ -56,6 +57,11 @@ public class CglibRpcProxy implements RpcProxy {
             this.serviceInterface = serviceInterface;
         }
 
+        /**
+         * 这里的返回对象Object其实应该要判断一下，接口的返回值接收的是什么。
+         * 比如调用的接口返回值是string，但是代理返回的是个异常对象，那么转成string肯定会出问题，怎么办？
+         *
+         */
         @Override
         public Object intercept(Object o, Method method, Object[] objects, MethodProxy proxy)
                 throws Throwable {
@@ -72,7 +78,16 @@ public class CglibRpcProxy implements RpcProxy {
 
             //让客户端发送调用信息（利用netty），并拿到返回值
             LOGGER.info("客户端发送调用信息");
-            return rpcClient.sendMessage(serviceInterface, method, objects).getResponse();
+            Response response = rpcClient.sendMessage(serviceInterface, method, objects);
+            //TODO 返回值处理还有问题，思考方法上面的注释
+            Object result = response.getResponse();
+            if(result != null){
+                return result;
+            }else if(response.getThrowable() != null){
+                return response.getThrowable().getMessage();
+            }else{
+                return "no response";
+            }
         }
 
         /**
