@@ -1,4 +1,4 @@
-package com.example.rabbitmq.tutorial.WorkerQueues;
+package com.example.rabbitmq.tutorial.Exchange;
 
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
@@ -6,7 +6,6 @@ import com.rabbitmq.client.ConnectionFactory;
 import com.rabbitmq.client.MessageProperties;
 
 import java.io.IOException;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeoutException;
@@ -40,14 +39,14 @@ public class Task {
         arguments.put("x-max-length", "10");
         //队列溢出策略
         arguments.put("x-overflow", "reject-publish");
-        //声明一个队列来让我们发送消息
-        //声明队列是幂等的，只有在这个队列不存在的时候才会创建
-        channel.queueDeclare(QUEUE_NAME, false, false, false, null);
+
+        //声明一个fanout类型的exchange
+        channel.exchangeDeclare("logExchange", "fanout");
 
         String message = "H.e.l.l.o....W.o.r.l.d.!.";
-        //然后将消息发送到队列中
+        //然后将消息发送到exchange中
         //消息内容是一个字节数组，所以你可以对它进行任意的编码
-        channel.basicPublish("", QUEUE_NAME, MessageProperties.PERSISTENT_TEXT_PLAIN, message.getBytes());
+        channel.basicPublish("logExchange", "", MessageProperties.PERSISTENT_TEXT_PLAIN, message.getBytes());
         System.out.println("send message:" + message);
 
         //最后关闭channel和connection

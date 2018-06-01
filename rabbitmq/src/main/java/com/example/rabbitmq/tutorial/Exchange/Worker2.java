@@ -1,11 +1,6 @@
-package com.example.rabbitmq.tutorial.WorkerQueues;
+package com.example.rabbitmq.tutorial.Exchange;
 
-import com.rabbitmq.client.AMQP;
-import com.rabbitmq.client.Channel;
-import com.rabbitmq.client.Connection;
-import com.rabbitmq.client.ConnectionFactory;
-import com.rabbitmq.client.DefaultConsumer;
-import com.rabbitmq.client.Envelope;
+import com.rabbitmq.client.*;
 
 import java.io.IOException;
 import java.util.concurrent.TimeoutException;
@@ -13,9 +8,7 @@ import java.util.concurrent.TimeoutException;
 /**
  * Created by dragon
  */
-public class Worker1 {
-
-    private static final String QUEUE_NAME = "hello";
+public class Worker2 {
 
     public static void main(String[] args) throws IOException, TimeoutException {
         //消费者和生产者一样，新建连接，创建通道，声明队列
@@ -25,8 +18,16 @@ public class Worker1 {
         connectionFactory.setUsername("zsl");
         connectionFactory.setPassword("zsl");
         Connection connection = connectionFactory.newConnection();
+
         Channel channel = connection.createChannel();
-        channel.queueDeclare(QUEUE_NAME, false, false, false, null);
+
+        //声明一个接收的交换机
+        channel.exchangeDeclare("logExchange", "fanout");
+        //声明一个新的队列
+        String queueName = channel.queueDeclare().getQueue();
+        //将新队列绑定到交换机上
+        channel.queueBind(queueName, "logExchange", "");
+
         System.out.println("waiting for message");
 
         //一个提供回调接口的对象，当有消息被推送时，回调该接口
@@ -39,6 +40,8 @@ public class Worker1 {
 
                 try {
                     doWork(message);
+
+                    channel.basicAck(envelope.getDeliveryTag(), false);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 } finally {
@@ -46,9 +49,9 @@ public class Worker1 {
                 }
             }
         };
-        boolean autoAck = true; // acknowledgment is covered below
+        boolean autoAck = false; // acknowledgment is covered below
         //设置消费的队列，是否ack，回调对象
-        channel.basicConsume(QUEUE_NAME, autoAck, defaultConsumer);
+        channel.basicConsume(queueName, autoAck, defaultConsumer);
 
     }
 

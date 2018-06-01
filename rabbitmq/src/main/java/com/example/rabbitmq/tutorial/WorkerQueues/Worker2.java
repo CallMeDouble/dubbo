@@ -20,12 +20,14 @@ public class Worker2 {
     public static void main(String[] args) throws IOException, TimeoutException {
         //消费者和生产者一样，新建连接，创建通道，声明队列
         ConnectionFactory connectionFactory = new ConnectionFactory();
-        connectionFactory.setHost("192.168.64.128");
+        connectionFactory.setHost("localhost");
         connectionFactory.setPort(5672);
-        connectionFactory.setUsername("double");
-        connectionFactory.setPassword("double");
+        connectionFactory.setUsername("zsl");
+        connectionFactory.setPassword("zsl");
         Connection connection = connectionFactory.newConnection();
+
         Channel channel = connection.createChannel();
+
         channel.queueDeclare(QUEUE_NAME, false, false, false, null);
         System.out.println("waiting for message");
 
@@ -39,6 +41,8 @@ public class Worker2 {
 
                 try {
                     doWork(message);
+
+                    channel.basicAck(envelope.getDeliveryTag(), false);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 } finally {

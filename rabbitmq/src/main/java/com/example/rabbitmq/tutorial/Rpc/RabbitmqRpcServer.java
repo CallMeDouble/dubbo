@@ -1,11 +1,7 @@
-package com.example.rabbitmq.tutorial.WorkerQueues;
+package com.example.rabbitmq.tutorial.Rpc;
 
-import com.rabbitmq.client.AMQP;
-import com.rabbitmq.client.Channel;
-import com.rabbitmq.client.Connection;
-import com.rabbitmq.client.ConnectionFactory;
-import com.rabbitmq.client.DefaultConsumer;
-import com.rabbitmq.client.Envelope;
+import com.rabbitmq.client.*;
+import com.sun.org.apache.regexp.internal.RE;
 
 import java.io.IOException;
 import java.util.concurrent.TimeoutException;
@@ -13,9 +9,9 @@ import java.util.concurrent.TimeoutException;
 /**
  * Created by dragon
  */
-public class Worker1 {
+public class RabbitmqRpcServer {
 
-    private static final String QUEUE_NAME = "hello";
+    private final static String REQUEST_QUEUE = "request_queue";
 
     public static void main(String[] args) throws IOException, TimeoutException {
         //消费者和生产者一样，新建连接，创建通道，声明队列
@@ -25,8 +21,12 @@ public class Worker1 {
         connectionFactory.setUsername("zsl");
         connectionFactory.setPassword("zsl");
         Connection connection = connectionFactory.newConnection();
+
         Channel channel = connection.createChannel();
-        channel.queueDeclare(QUEUE_NAME, false, false, false, null);
+        channel.queueDeclare(REQUEST_QUEUE, false, false, false, null);
+
+        channel.basicQos(1);
+
         System.out.println("waiting for message");
 
         //一个提供回调接口的对象，当有消息被推送时，回调该接口
@@ -34,27 +34,26 @@ public class Worker1 {
             @Override
             public void handleDelivery(String consumerTag, Envelope envelope, AMQP.BasicProperties properties,
                     byte[] body) throws IOException {
-                String message = new String(body, "utf-8");
-                System.out.println("delivery message:"+message);
+                AMQP.BasicProperties replayProperties = new AMQP.BasicProperties.Builder().
+                        correlationId(properties.getCorrelationId()).build();
 
-                try {
-                    doWork(message);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                } finally {
-                    System.out.println(" [x] Done");
-                }
+
+                String message = new String(body, "utf-8");
+                System.out.println("receive message:"+message);
+
+                Integer response = new Integer("4");
+
+
+                channel.basicPublish("", properties.getReplyTo(), replayProperties, response.toString().getBytes());
             }
         };
-        boolean autoAck = true; // acknowledgment is covered below
-        //设置消费的队列，是否ack，回调对象
-        channel.basicConsume(QUEUE_NAME, autoAck, defaultConsumer);
 
+        channel.basicConsume(REQUEST_QUEUE,true, defaultConsumer);
     }
 
-    private static void doWork(String task) throws InterruptedException {
-        for (char ch: task.toCharArray()) {
-            if (ch == '.') Thread.sleep(1000);
-        }
+    private static int fib(int n) {
+        if (n == 0) return 0;
+        if (n == 1) return 1;
+        return fib(n-1) + fib(n-2);
     }
 }
