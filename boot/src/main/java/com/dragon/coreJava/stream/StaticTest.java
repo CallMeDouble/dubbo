@@ -1,4 +1,4 @@
-package com.dragon.coreJava;
+package com.dragon.coreJava.stream;
 
 /**
  * Created by zhushuanglong on 2018/2/24.

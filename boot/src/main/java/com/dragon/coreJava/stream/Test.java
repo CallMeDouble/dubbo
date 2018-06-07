@@ -1,12 +1,6 @@
-package com.dragon.coreJava;
+package com.dragon.coreJava.stream;
 
-import com.google.common.primitives.Ints;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
