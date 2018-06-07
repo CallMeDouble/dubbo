@@ -26,6 +26,8 @@ public class Receiver {
         connectionFactory.setPassword("double");
         Connection connection = connectionFactory.newConnection();
         Channel channel = connection.createChannel();
+
+        //声明一个接收的队列
         channel.queueDeclare(QUEUE_NAME, false, false, false, null);
         System.out.println("waiting for message");
 
