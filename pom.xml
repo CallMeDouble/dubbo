@@ -16,7 +16,7 @@
     <module>provider</module>
     <module>consumer</module>
     <module>base</module>
-      <module>Test</module>
+    <module>Test</module>
     <module>boot</module>
   </modules>
   <packaging>pom</packaging>
@@ -156,5 +156,6 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
+
 
 </project>
