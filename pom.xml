@@ -24,7 +24,7 @@
         <tomcat.maven.version>2.2</tomcat.maven.version>
         <webserver.port>8080</webserver.port>
         <!-- main version setting -->
-        <spring.version>4.2.7.RELEASE</spring.version>
+        <spring.version>5.2.8.RELEASE</spring.version>
         <spring.data.jpa.version>1.7.0.RELEASE</spring.data.jpa.version>
         <spring.jms.version>4.2.5.RELEASE</spring.jms.version>
         <hibernate.core.version>4.3.11.Final</hibernate.core.version>
