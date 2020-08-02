@@ -43,7 +43,7 @@
         <jackson.version>2.7.6</jackson.version>
         <json-lib.version>2.4</json-lib.version>
         <!-- jdbc driver setting -->
-        <mysql.version>5.1.38</mysql.version>
+        <mysql.version>8.0.16</mysql.version>
         <druid.version>1.0.17</druid.version>
         <c3p0.version>0.9.5.2</c3p0.version>
         <!-- log setting -->
