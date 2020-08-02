@@ -1,0 +1,5 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Thu Jul 23 09:45:35 CST 2020
+http\://repo2.maven.org/maven2/.error=Could not transfer artifact log4j\:log4j\:pom\:1.2.12 from/to maven2-repo (http\://repo2.maven.org/maven2/)\: Transfer failed for http\://repo2.maven.org/maven2/log4j/log4j/1.2.12/log4j-1.2.12.pom
+https\://repo.maven.apache.org/maven2/.lastUpdated=1595468735457
+@default-maven2-repo-http\://repo2.maven.org/maven2/.lastUpdated=1595468735128

@@ -1,0 +1,5 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Thu Jul 23 09:45:17 CST 2020
+http\://repo2.maven.org/maven2/.error=Could not transfer artifact org.apache.maven\:maven-plugin-descriptor\:pom\:2.0.9 from/to maven2-repo (http\://repo2.maven.org/maven2/)\: Transfer failed for http\://repo2.maven.org/maven2/org/apache/maven/maven-plugin-descriptor/2.0.9/maven-plugin-descriptor-2.0.9.pom
+https\://repo.maven.apache.org/maven2/.lastUpdated=1595468717595
+@default-maven2-repo-http\://repo2.maven.org/maven2/.lastUpdated=1595468717267

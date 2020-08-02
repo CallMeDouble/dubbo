@@ -1,0 +1,5 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Thu Jul 23 09:45:02 CST 2020
+http\://repo2.maven.org/maven2/.error=Could not transfer artifact junit\:junit\:jar\:3.8.1 from/to maven2-repo (http\://repo2.maven.org/maven2/)\: Transfer failed for http\://repo2.maven.org/maven2/junit/junit/3.8.1/junit-3.8.1.jar
+https\://repo.maven.apache.org/maven2/.lastUpdated=1595468702413
+@default-maven2-repo-http\://repo2.maven.org/maven2/.lastUpdated=1595468700182

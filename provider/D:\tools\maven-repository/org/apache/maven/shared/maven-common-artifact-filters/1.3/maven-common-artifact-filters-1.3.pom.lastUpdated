@@ -1,0 +1,5 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Thu Jul 23 09:45:45 CST 2020
+http\://repo2.maven.org/maven2/.error=Could not transfer artifact org.apache.maven.shared\:maven-common-artifact-filters\:pom\:1.3 from/to maven2-repo (http\://repo2.maven.org/maven2/)\: Transfer failed for http\://repo2.maven.org/maven2/org/apache/maven/shared/maven-common-artifact-filters/1.3/maven-common-artifact-filters-1.3.pom
+https\://repo.maven.apache.org/maven2/.lastUpdated=1595468745102
+@default-maven2-repo-http\://repo2.maven.org/maven2/.lastUpdated=1595468744772

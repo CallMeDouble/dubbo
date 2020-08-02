@@ -1,0 +1,5 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Thu Jul 23 09:48:25 CST 2020
+http\://repo2.maven.org/maven2/.error=Could not transfer artifact commons-lang\:commons-lang\:pom\:2.4 from/to maven2-repo (http\://repo2.maven.org/maven2/)\: Transfer failed for http\://repo2.maven.org/maven2/commons-lang/commons-lang/2.4/commons-lang-2.4.pom
+https\://repo.maven.apache.org/maven2/.lastUpdated=1595468905551
+@default-maven2-repo-http\://repo2.maven.org/maven2/.lastUpdated=1595468905217

@@ -1,0 +1,5 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Thu Jul 23 09:45:10 CST 2020
+http\://repo2.maven.org/maven2/.error=Could not transfer artifact xpp3\:xpp3_min\:jar\:1.1.4c from/to maven2-repo (http\://repo2.maven.org/maven2/)\: Transfer failed for http\://repo2.maven.org/maven2/xpp3/xpp3_min/1.1.4c/xpp3_min-1.1.4c.jar
+https\://repo.maven.apache.org/maven2/.lastUpdated=1595468710551
+@default-maven2-repo-http\://repo2.maven.org/maven2/.lastUpdated=1595468709396

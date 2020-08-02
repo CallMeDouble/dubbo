@@ -1,0 +1,5 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Thu Jul 23 09:46:04 CST 2020
+http\://repo2.maven.org/maven2/.error=Could not transfer artifact org.eclipse.aether\:aether-util\:pom\:0.9.0.M2 from/to maven2-repo (http\://repo2.maven.org/maven2/)\: Transfer failed for http\://repo2.maven.org/maven2/org/eclipse/aether/aether-util/0.9.0.M2/aether-util-0.9.0.M2.pom
+https\://repo.maven.apache.org/maven2/.lastUpdated=1595468764604
+@default-maven2-repo-http\://repo2.maven.org/maven2/.lastUpdated=1595468764288

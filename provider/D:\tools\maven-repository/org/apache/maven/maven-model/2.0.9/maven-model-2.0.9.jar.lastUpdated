@@ -1,0 +1,5 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Thu Jul 23 09:45:39 CST 2020
+http\://repo2.maven.org/maven2/.error=Could not transfer artifact org.apache.maven\:maven-model\:jar\:2.0.9 from/to maven2-repo (http\://repo2.maven.org/maven2/)\: Transfer failed for http\://repo2.maven.org/maven2/org/apache/maven/maven-model/2.0.9/maven-model-2.0.9.jar
+https\://repo.maven.apache.org/maven2/.lastUpdated=1595468739959
+@default-maven2-repo-http\://repo2.maven.org/maven2/.lastUpdated=1595468736833

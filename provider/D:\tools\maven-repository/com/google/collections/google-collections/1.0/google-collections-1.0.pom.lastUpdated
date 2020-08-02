@@ -1,0 +1,5 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Thu Jul 23 09:45:36 CST 2020
+http\://repo2.maven.org/maven2/.error=Could not transfer artifact com.google.collections\:google-collections\:pom\:1.0 from/to maven2-repo (http\://repo2.maven.org/maven2/)\: Transfer failed for http\://repo2.maven.org/maven2/com/google/collections/google-collections/1.0/google-collections-1.0.pom
+https\://repo.maven.apache.org/maven2/.lastUpdated=1595468736128
+@default-maven2-repo-http\://repo2.maven.org/maven2/.lastUpdated=1595468735798

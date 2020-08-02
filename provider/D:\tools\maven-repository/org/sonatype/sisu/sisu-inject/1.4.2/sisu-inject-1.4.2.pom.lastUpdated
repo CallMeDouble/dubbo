@@ -1,0 +1,5 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Thu Jul 23 09:46:01 CST 2020
+http\://repo2.maven.org/maven2/.error=Could not transfer artifact org.sonatype.sisu\:sisu-inject\:pom\:1.4.2 from/to maven2-repo (http\://repo2.maven.org/maven2/)\: Transfer failed for http\://repo2.maven.org/maven2/org/sonatype/sisu/sisu-inject/1.4.2/sisu-inject-1.4.2.pom
+https\://repo.maven.apache.org/maven2/.lastUpdated=1595468761031
+@default-maven2-repo-http\://repo2.maven.org/maven2/.lastUpdated=1595468760715

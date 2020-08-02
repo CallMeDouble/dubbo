@@ -1,0 +1,5 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Thu Jul 23 09:45:09 CST 2020
+http\://repo2.maven.org/maven2/.error=Could not transfer artifact org.codehaus.plexus\:plexus-interpolation\:pom\:1.6 from/to maven2-repo (http\://repo2.maven.org/maven2/)\: Transfer failed for http\://repo2.maven.org/maven2/org/codehaus/plexus/plexus-interpolation/1.6/plexus-interpolation-1.6.pom
+https\://repo.maven.apache.org/maven2/.lastUpdated=1595468709375
+@default-maven2-repo-http\://repo2.maven.org/maven2/.lastUpdated=1595468709039

@@ -1,0 +1,5 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Thu Jul 23 09:45:28 CST 2020
+http\://repo2.maven.org/maven2/.error=Could not transfer artifact org.sonatype.spice\:spice-parent\:pom\:12 from/to maven2-repo (http\://repo2.maven.org/maven2/)\: Transfer failed for http\://repo2.maven.org/maven2/org/sonatype/spice/spice-parent/12/spice-parent-12.pom
+https\://repo.maven.apache.org/maven2/.lastUpdated=1595468728346
+@default-maven2-repo-http\://repo2.maven.org/maven2/.lastUpdated=1595468728019

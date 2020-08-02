@@ -1,0 +1,5 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Thu Jul 23 09:45:33 CST 2020
+http\://repo2.maven.org/maven2/.error=Could not transfer artifact org.codehaus.plexus\:plexus-container-default\:pom\:1.5.5 from/to maven2-repo (http\://repo2.maven.org/maven2/)\: Transfer failed for http\://repo2.maven.org/maven2/org/codehaus/plexus/plexus-container-default/1.5.5/plexus-container-default-1.5.5.pom
+https\://repo.maven.apache.org/maven2/.lastUpdated=1595468733785
+@default-maven2-repo-http\://repo2.maven.org/maven2/.lastUpdated=1595468733456

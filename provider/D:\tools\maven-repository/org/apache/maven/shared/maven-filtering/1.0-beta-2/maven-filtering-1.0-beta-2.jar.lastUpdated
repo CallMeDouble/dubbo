@@ -1,0 +1,5 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Thu Jul 23 09:45:10 CST 2020
+http\://repo2.maven.org/maven2/.error=Could not transfer artifact org.apache.maven.shared\:maven-filtering\:jar\:1.0-beta-2 from/to maven2-repo (http\://repo2.maven.org/maven2/)\: Transfer failed for http\://repo2.maven.org/maven2/org/apache/maven/shared/maven-filtering/1.0-beta-2/maven-filtering-1.0-beta-2.jar
+https\://repo.maven.apache.org/maven2/.lastUpdated=1595468710553
+@default-maven2-repo-http\://repo2.maven.org/maven2/.lastUpdated=1595468709396
