@@ -13,5 +13,7 @@ public class TestMS {
 		
 		String result = jedis_S.get("class");
 		System.out.println(result);
+
+
 	}
 }
