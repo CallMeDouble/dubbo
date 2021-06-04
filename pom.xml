@@ -62,7 +62,7 @@
         <prettytime.version>3.2.3.Final</prettytime.version>
         <jcaptcha.version>2.0-alpha-1</jcaptcha.version>
         <jsoup.version>1.7.3</jsoup.version>
-        <httpclient.version>4.3.6</httpclient.version>
+        <httpclient.version>4.5.13</httpclient.version>
         <!-- others -->
         <quartz.version>2.2.3</quartz.version>
         <dom4j.version>1.6.1</dom4j.version>
