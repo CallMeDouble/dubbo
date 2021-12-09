@@ -40,7 +40,7 @@
         <common.compress.version>1.6</common.compress.version>
         <guava.version>17.0</guava.version>
         <fastjson.version>1.2.29</fastjson.version>
-        <jackson.version>2.7.6</jackson.version>
+        <jackson.version>2.9.10.8</jackson.version>
         <json-lib.version>2.4</json-lib.version>
         <!-- jdbc driver setting -->
         <mysql.version>5.1.38</mysql.version>
